@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Análisis Estadístico de Concesiones Petroleras y de Gas — BLM MLRS" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/087dfb62b8.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Análisis Estadístico — BLM Oil &amp; Gas Leases (MLRS)</title>
+</head>
+
+<body>
+  <header class="header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <i class="fas fa-oil-can" style="color:#1a4fdb;font-size:1.4rem;"></i>
+      <span style="font-weight:800;font-size:0.9rem;color:#001b41;letter-spacing:0.06em;font-family:'IBM Plex Sans',sans-serif;">BLM · MLRS</span>
+    </div>
+    <div class="menu-btn" id="menu-btn">
+      <span class="top-bar convert-bars" id="top-bar"></span>
+      <span class="middle-bar visible" id="middle-bar"></span>
+      <span class="bottom-bar convert-bars" id="bottom-bar"></span>
+    </div>
+    <nav class="navbar" id="navbar">
+      <ul class="navlist">
+        <li class="navitem"><a href="#interactive-map" class="navlink" id="interactive-map-link"
+            data-i18n="nav_map">Mapa Interactivo</a></li>
+        <li class="navitem"><a href="#home" class="navlink" id="home-link" data-i18n="nav_home">Inicio</a></li>
+
+        <li class="navitem navitem-show">
+          <a href="#project-info" class="navlink navlink-deploy" id="about-proyect-link" data-i18n="nav_intro">
+            Introducción
+            <img src="assets/icons/arrow.svg" alt="flecha" class="navitem-arrow" />
+          </a>
+          <ul class="navlist-nested">
+            <li class="navitem-inside"><a href="#problem" class="navlink navlink-inside navl-project"
+                data-i18n="nav_problem">Planteamiento del Problema</a></li>
+            <li class="navitem-inside"><a href="#map" class="navlink navlink-inside navl-project"
+                data-i18n="nav_geo">Mapa de Ubicación Geográfica</a></li>
+            <li class="navitem-inside"><a href="#objectives" class="navlink navlink-inside navl-project"
+                data-i18n="nav_obj">Objetivos</a></li>
+          </ul>
+        </li>
+
+        <li class="navitem navitem-show">
+          <a href="#descriptive-statistics" class="navlink navlink-deploy navl-ds" id="descriptive-statistics-link"
+            data-i18n="nav_desc_stats">
+            Estadística Descriptiva
+            <img src="assets/icons/arrow.svg" alt="flecha" class="navitem-arrow" />
+          </a>
+          <ul class="navlist-nested">
+            <li class="navitem-inside"><a href="#ds-methodology" class="navlink navlink-inside navl-ds"
+                data-i18n="nav_methodology">Metodología</a></li>
+            <li class="navitem-inside"><a href="#ds-variables-tables" class="navlink navlink-inside navl-ds"
+                data-i18n="nav_vars_table">Tablas de Variables</a></li>
+            <li class="navitem-inside"><a href="#ds-variables" class="navlink navlink-inside navl-ds"
+                data-i18n="nav_vars">Variables</a></li>
+          </ul>
+        </li>
+
+        <li class="navitem"><a href="#inferential-statistics" class="navlink" id="inferential-statistics-link"
+            data-i18n="nav_inf_stats">Estadística Inferencial</a></li>
+        <li class="navitem"><a href="#regression-models" class="navlink" id="regression-models-link"
+            data-i18n="nav_reg_models">Modelos de Regresión</a></li>
+        <li class="navitem"><a href="#machine-learning" class="navlink" id="machine-learning-link"
+            data-i18n="nav_ml">Machine Learning</a></li>
+
+        <li class="navitem navitem-show">
+          <a href="#more" class="navlink navlink-deploy" id="more-link" data-i18n="nav_more">
+            Más
+            <img src="assets/icons/arrow.svg" alt="flecha" class="navitem-arrow" />
+          </a>
+          <ul class="navlist-nested">
+            <li class="navitem-inside"><a href="#tools" class="navlink navlink-inside navl-project" id="tools-link"
+                data-i18n="nav_tools">Herramientas</a></li>
+            <li class="navitem-inside"><a href="#about-us" class="navlink navlink-inside navl-project"
+                id="about-us-link" data-i18n="nav_about">Sobre Nosotros</a></li>
+          </ul>
+        </li>
+
+        <li class="navitem" style="display:flex; align-items:center;">
+          <button id="langToggle" class="lang-toggle-btn regression-rs-link">
+            <span class="regression-link-title" style="pointer-events: none;">ES / EN</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+  </main>
+  <footer class="footer-wrap">
+    <div class="footer-inner">
+      <ul class="team-list">
+        <li>GUALAN SHELBY</li>
+        <li>MILES JULEYDI</li>
+        <li>NEIRA FERNANDO</li>
+        <li>RAMÍREZ CARLOS</li>
+        <li>SARMIENTO MARTÍN</li>
+      </ul>
+
+      <div class="copyright-block">
+        <p class="footer-copy" data-i18n="footer_copy">
+          COPYRIGHT © 2026, GRUPO 1 - ESTADÍSTICA Y PROBABILIDAD.
+        </p>
+        <p class="footer-university">
+          UNIVERSIDAD CENTRAL DEL ECUADOR - FIGEMPA
+        </p>
+        <p class="footer-rights" data-i18n="footer_rights">TODOS LOS DERECHOS RESERVADOS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="chatbotBtn" class="chatbot-btn">🤖</button>
+
+  <div id="chatbotModal" class="chatbot-modal">
+    <div class="chatbot-header">
+      <p class="chatbot-header-text" data-i18n="chat_title">Asistente BLM 🤖</p>
+      <button id="closeChatbot" class="closeChatbot-btn">&times;</button>
+    </div>
+    <div id="chatbox" class="chat-box">
+    </div>
+  </div>
+
+  <script src="js/script.js?v=1.0.9" defer></script>
+</body>
+
+</html>
