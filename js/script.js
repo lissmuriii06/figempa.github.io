@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /* LÓGICA DE TRADUCCIÓN                             */
 /* -------------------------------------------------------------------------- */
-console.log("SCRIPT_LOADED_VERSION_2");
+console.log("SCRIPT_LOADED");
 const translations = {
   es: {
     "nav_map": "Mapa Interactivo",
@@ -129,7 +129,7 @@ const translations = {
     "team_title": "Nuestro Equipo",
     "team_intro": "A continuación tienes disponible los curriculum vitae de cada uno de los integrantes que conforman este grupo de trabajo.",
     "uc_title": "En construcción",
-    "tools_title": "RECURSOS Y INFRAESTRUCTURA",
+    "tools_title": "RECURSOS E INFRAESTRUCTURA",
     "tools_sub": "Ecosistema operativo para el procesamiento de datos geoespaciales y modelado estadístico.",
     "tools_list_title": "HERRAMIENTAS UTILIZADAS",
     "bot_default": "No estoy seguro de cómo responder eso. Puedes escribirme: 'proyecto', 'variables', 'metodología', 'regresión', 'machine learning', 'herramientas' o 'contacto'.",
@@ -163,7 +163,31 @@ const translations = {
     "is_sub": "Pruebas de hipótesis y análisis inferencial aplicado a las variables cualitativas y cuantitativas de las plantas solares.",
     "reg_sub": "Regresiones simples (lineal, potencial, exponencial, logarítmica y polinómica) y regresión múltiple 3D entre variables del dataset.",
     "about_us_sub": "Estudiantes de Ingeniería en Petróleos de la FIGEMPA – Universidad Central del Ecuador.",
-    "chip_reg": "Regresión"
+    "chip_reg": "Regresión",
+    "highlights_title_1": "Resultados Globales de MLRS",
+    "highlights_title_2": "Alcance e Impacto del Proyecto",
+    "hl_stat_1_val": "58,978",
+    "hl_stat_1_lab": "Registros de Concesiones",
+    "hl_stat_2_val": "5",
+    "hl_stat_2_lab": "Modelos de Regresión",
+    "hl_stat_3_val": "ML",
+    "hl_stat_3_lab": "Predicción Avanzada",
+    "hl_stat_4_val": "R",
+    "hl_stat_4_lab": "Computación Científica",
+    "hl_stat_5_val": "2026",
+    "hl_stat_5_lab": "Año del Proyecto",
+    "hl_stat_6_val": "Global",
+    "hl_stat_6_lab": "Integración MLRS",
+    "hl_stat_7_val": "12+",
+    "hl_stat_7_lab": "Herramientas Geoespaciales",
+    "hl_stat_8_val": "100%",
+    "hl_stat_8_lab": "Enfoque Académico",
+    "vars_landing_eyebrow": "Categorización de Datos",
+    "vars_landing_title": "Nuestros Tipos de Variables",
+    "vars_landing_lead": "Explora la clasificación técnica del dataset de plantas solares, dividida en categorías cualitativas y cuantitativas para un análisis preciso.",
+    "vars_qual_title": "Variables Cualitativas",
+    "vars_quant_title": "Variables Cuantitativas",
+    "view_more": "Ver Detalles"
   },
 
   en: {
@@ -326,7 +350,31 @@ const translations = {
     "is_sub": "Hypothesis testing and inferential analysis applied to the qualitative and quantitative variables of solar plants.",
     "reg_sub": "Simple regressions (linear, potential, exponential, logarithmic, and polynomial) and 3D multiple regression between dataset variables.",
     "about_us_sub": "Petroleum Engineering students from FIGEMPA – Central University of Ecuador.",
-    "chip_reg": "Regression"
+    "chip_reg": "Regression",
+    "highlights_title_1": "Global MLRS Results",
+    "highlights_title_2": "Project Scope and Impact",
+    "hl_stat_1_val": "58,978",
+    "hl_stat_1_lab": "Lease Records",
+    "hl_stat_2_val": "5",
+    "hl_stat_2_lab": "Regression Models",
+    "hl_stat_3_val": "ML",
+    "hl_stat_3_lab": "Advanced Prediction",
+    "hl_stat_4_val": "R",
+    "hl_stat_4_lab": "Scientific Computing",
+    "hl_stat_5_val": "2026",
+    "hl_stat_5_lab": "Project Year",
+    "hl_stat_6_val": "Global",
+    "hl_stat_6_lab": "MLRS Integration",
+    "hl_stat_7_val": "12+",
+    "hl_stat_7_lab": "Geospatial Tools",
+    "hl_stat_8_val": "100%",
+    "hl_stat_8_lab": "Academic Focus",
+    "vars_landing_eyebrow": "Data Categorization",
+    "vars_landing_title": "Our Variable Types",
+    "vars_landing_lead": "Explore the technical classification of the solar plant dataset, divided into technical categories for precise analysis.",
+    "vars_qual_title": "Qualitative Variables",
+    "vars_quant_title": "Quantitative Variables",
+    "view_more": "View Details"
   },
 };
 
@@ -514,33 +562,26 @@ const homeCode = `
     <div class="video-overlay"></div>
     <div class="hero-inner-centered">
       <style>
-        .hero-eyebrow-corp {
-          display: inline-flex; align-items: center; gap: 10px;
-          font-size: .72rem; font-weight: 700; letter-spacing: .18em;
-          text-transform: uppercase; color: rgba(255,255,255,.65);
-          margin-bottom: 20px; animation: heroFadeUp .6s ease both;
-        }
-        .hero-eyebrow-corp .badge {
-          background: #1a4fdb; color: #fff; border-radius: 4px;
-          padding: 3px 8px; font-size: .62rem; letter-spacing: .15em; font-weight: 800;
-        }
         .hero-title-main {
           font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800;
           line-height: 1.06; letter-spacing: -.03em; color: #fff;
           margin: 0 0 20px; animation: heroFadeUp .7s ease .1s both;
           font-family: 'IBM Plex Sans','Inter',sans-serif; max-width: 680px;
+          position: relative; z-index: 2;
         }
         .hero-accent-line {
           width: 56px; height: 4px; background: #1a4fdb;
           border-radius: 2px; margin: 0 0 22px;
           animation: heroFadeUp .7s ease .16s both;
+          position: relative; z-index: 2;
         }
         .hero-lead-main {
           font-size: clamp(.95rem,2vw,1.12rem); color: rgba(255,255,255,.7);
           max-width: 540px; margin: 0 0 34px; line-height: 1.74;
           font-weight: 400; animation: heroFadeUp .7s ease .24s both;
+          position: relative; z-index: 2;
         }
-        .hero-ctas { display:flex; flex-wrap:wrap; gap:12px; animation: heroFadeUp .7s ease .32s both; }
+        .hero-ctas { display:flex; flex-wrap:wrap; gap:12px; animation: heroFadeUp .7s ease .32s both; position: relative; z-index: 2; }
         .hero-cta-primary {
           display:inline-flex; align-items:center; gap:8px;
           padding:.82rem 1.9rem; background:#1a4fdb; color:#fff;
@@ -572,10 +613,7 @@ const homeCode = `
         .hero-stat-label { font-size:.68rem; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.1em; font-weight:600; }
         @keyframes heroFadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
       </style>
-      <div class="hero-eyebrow-corp">
-        <span class="badge">BLM · FIGEMPA</span>
-        <span>Universidad Central del Ecuador · 2026</span>
-      </div>
+      <!-- Section Label Removed -->
       <h1 class="hero-title-main" data-i18n="hero_title_centered">ANÁLISIS ESTADÍSTICO DE PLANTAS SOLARES A NIVEL MUNDIAL</h1>
       <div class="hero-accent-line"></div>
       <p class="hero-lead-main" data-i18n="hero_lead_centered">Análisis estadístico de datos, aplicando métodos descriptivos e inferenciales con el uso del lenguaje R en RStudio</p>
@@ -588,12 +626,8 @@ const homeCode = `
         </a>
       </div>
     </div>
-    <div class="hero-stats-bar">
-      <div class="hero-stat-item"><span class="hero-stat-num">58,978</span><span class="hero-stat-label">Registros</span></div>
-      <div class="hero-stat-item"><span class="hero-stat-num">5</span><span class="hero-stat-label">Regresiones</span></div>
-      <div class="hero-stat-item"><span class="hero-stat-num">ML</span><span class="hero-stat-label">Machine Learning</span></div>
-      <div class="hero-stat-item"><span class="hero-stat-num">R</span><span class="hero-stat-label">RStudio</span></div>
     </div>
+
   </section>
 
   <section class="important section-box" style="border-left:4px solid #f59e0b;background:#fffbf0;">
@@ -633,6 +667,54 @@ const homeCode = `
       <img src="assets/images/facultad.jpg" alt="FIGEMPA" class="motivation-img"/>
     </div>
   </section>
+
+  <section class="highlights-section">
+    <div class="highlights-container">
+      <div class="highlights-row">
+        <span class="highlights-row-title" data-i18n="highlights_title_1">Resultados Globales de MLRS</span>
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_1_val">58,978</span>
+            <span class="highlight-label" data-i18n="hl_stat_1_lab">Registros de Concesiones</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_2_val">5</span>
+            <span class="highlight-label" data-i18n="hl_stat_2_lab">Modelos de Regresión</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_3_val">ML</span>
+            <span class="highlight-label" data-i18n="hl_stat_3_lab">Predicción Avanzada</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_4_val">R</span>
+            <span class="highlight-label" data-i18n="hl_stat_4_lab">Computación Científica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights-row">
+        <span class="highlights-row-title" data-i18n="highlights_title_2">Alcance e Impacto del Proyecto</span>
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_5_val">2026</span>
+            <span class="highlight-label" data-i18n="hl_stat_5_lab">Año del Proyecto</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_6_val">Global</span>
+            <span class="highlight-label" data-i18n="hl_stat_6_lab">Integración MLRS</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_7_val">12+</span>
+            <span class="highlight-label" data-i18n="hl_stat_7_lab">Herramientas Geoespaciales</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value" data-i18n="hl_stat_8_val">100%</span>
+            <span class="highlight-label" data-i18n="hl_stat_8_lab">Enfoque Académico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 `;
 
 
@@ -656,62 +738,30 @@ homeLink.addEventListener("click", (e) => {
     INTERACTIVE MAP
 ---------------------------- */
 const interactiveMapCode = `
-  <style>
-    .map-section-wrap {
-      width: 100%;
-      background: #f8fafc;
-      padding-bottom: 60px;
-      margin-top: ${header.offsetHeight}px;
-    }
-    .map-hero-corp {
-      background: #001b41;
-      padding: 60px 5%;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .map-hero-corp::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, #1a4fdb, #0ea5e9);
-    }
-    .map-hero-eyebrow-corp {
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .2em; color: rgba(255,255,255,.6); margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .map-hero-corp h1 {
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0 0 16px;
-      letter-spacing: -.03em; font-family: 'IBM Plex Sans', sans-serif;
-    }
-    .map-hero-corp p {
-      max-width: 600px; font-size: 1.1rem; color: rgba(255,255,255,.8);
-      line-height: 1.6; margin: 0;
-    }
-    .map-frame-outer-corp {
-      max-width: 1280px; margin: -40px auto 0; background: #fff;
-      border-radius: 12px; box-shadow: 0 20px 50px rgba(0,27,65,.15);
-      overflow: hidden; position: relative; z-index: 5;
-      border: 1px solid #e2e8f0;
-    }
-    .map-frame-bar-corp {
-      background: #f1f5f9; padding: 12px 20px; border-bottom: 1px solid #e2e8f0;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .map-frame-dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
-    .map-frame-url { font-size: .75rem; color: #64748b; font-family: monospace; }
-    .map-frame-outer-corp iframe {
-      width: 100%; height: 750px; border: none; display: block;
-    }
-    .map-footer-corp {
-      text-align: center; margin-top: 30px; font-size: .85rem; color: #64748b;
-    }
-  </style>
+      <style>
+        .map-section-wrap {
+          width: 100%;
+          background: #f8fafc;
+          padding-bottom: 60px;
+          margin-top: ${header.offsetHeight}px;
+        }
+        .map-frame-bar-corp {
+          background: #f1f5f9; padding: 12px 20px; border-bottom: 1px solid #e2e8f0;
+          display: flex; align-items: center; gap: 12px;
+        }
+        .map-frame-dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
+        .map-frame-url { font-size: .75rem; color: #64748b; font-family: monospace; }
+        .map-frame-outer-corp iframe {
+          width: 100%; height: 750px; border: none; display: block;
+        }
+        .map-footer-corp {
+          text-align: center; margin-top: 30px; font-size: .85rem; color: #64748b;
+        }
+      </style>
 
   <div class="map-section-wrap">
     <div class="map-hero-corp">
-      <div class="map-hero-eyebrow-corp">
-        <i class="fas fa-satellite"></i> <span data-i18n="map_eyebrow">Visualización Satelital · MLRS</span>
-      </div>
+      <!-- Section Label Removed -->
       <h1 data-i18n="map_title">MAPA INTERACTIVO DE CONCESIONES</h1>
       <p data-i18n="map_sub">Seguimiento geoespacial de plantas solares a nivel global con indicadores técnicos y estados operativos.</p>
     </div>
@@ -744,9 +794,7 @@ interactiveMapLink.addEventListener("click", (e) => {
 // About project
 const aboutProyectCode = `
   <div class="map-hero-corp">
-    <div class="map-hero-eyebrow-corp">
-      <i class="fas fa-book-open"></i> <span data-i18n="nav_intro">Introducción y Contexto</span>
-    </div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="about_intro_title">INTRODUCCIÓN AL PROYECTO</h1>
     <p data-i18n="about_intro_sub">Análisis exhaustivo de la infraestructura solar global, planteamiento de desafíos energéticos y objetivos estratégicos.</p>
   </div>
@@ -758,9 +806,9 @@ const aboutProyectCode = `
     </div>
     <div style="max-width:900px; margin:0 auto;">
       <p class="problem-desc" style="font-size:1.1rem; line-height:1.8; color:#374151" data-i18n="about_problem_p1">El análisis de las plantas solares a nivel mundial es fundamental para optimizar la transición hacia energías renovables, comprendiendo los factores de eficiencia y distribución geográfica.</p>
-      <div style="background:#f1f5f9; padding:25px; border-radius:12px; border-left:4px solid #1a4fdb; margin-top:20px;">
-        <p style="margin:0; font-size:.95rem; color:#475569" data-i18n="about_problem_p2">Este dataset ha sido consolidado en colaboración con diversas entidades tecnológicas para garantizar la integridad del análisis estadístico.</p>
-      </div>
+      <p class="problem-desc" style="font-size:1.1rem; line-height:1.8; color:#374151; margin-top:20px;">
+        El dataset utilizado para este proyecto se puede obtener desde el repositorio del proyecto. Este dataset es el resultado de la colaboración entre nuestro equipo de trabajo y el Departamento de Tecnología de Computación de la Universidad de Alicante, España, a partir de la información obtenida de las plataformas Kaggle, NASA Power Data, Global Solar Atlas, Global Wind Atlas y Copernicus cumpliendo con los criterios establecidos para el proyecto.
+      </p>
     </div>
   </section>
 
@@ -837,48 +885,76 @@ const dSMethodology = `
       <!-- Population Card -->
       <article class="met-card" style="background:#fff; border-radius:20px; padding:30px; border-top:4px solid #1a4fdb; box-shadow:0 8px 30px rgba(0,0,0,0.03); display:flex; flex-direction:column; gap:15px;">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-           <span style="font-size:0.8rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:1px;" data-i18n="pop_title">POBLACIÓN</span>
+           <span style="font-size:0.8rem; font-weight:700; color:#1a4fdb; text-transform:uppercase; letter-spacing:1px;" data-i18n="pop_title">POBLACIÓN</span>
            <i class="fas fa-users-viewfinder" style="color:#1a4fdb; font-size:1.2rem;"></i>
         </div>
         <div>
-          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin-bottom:5px;" data-i18n="pop_text">Plantas Solares a nivel mundial.</p>
-          <p style="font-size:0.85rem; color:#64748b; line-height:1.5;">Definición textual representativa de todo el ecosistema solar fotovoltaico registrado.</p>
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">TEXTUAL</span>
+          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin:0;" data-i18n="pop_text">Plantas Solares a nivel mundial.</p>
         </div>
-        <div style="margin-top:auto; padding:15px; background:#f4f7fe; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#1a4fdb; border: 1px solid rgba(26,79,219,0.1);">
-          <span style="opacity:0.6">U = { x | x ∈ PS ∧ </span><br>
-          <span style="margin-left:10px">Loc(x) ∈ "Mundo" }</span>
+        <div style="margin-top:auto;">
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">SIMBÓLICO</span>
+          <div style="padding:15px; background:#f4f7fe; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#1a4fdb; border: 1px solid rgba(26,79,219,0.1);">
+            <span style="opacity:0.6">U = { x | x ∈ PS ∧ </span><br>
+            <span style="margin-left:10px">Loc(x) ∈ "Mundo" }</span>
+          </div>
         </div>
       </article>
 
       <!-- Individual Card -->
       <article class="met-card" style="background:#fff; border-radius:20px; padding:30px; border-top:4px solid #0ea5e9; box-shadow:0 8px 30px rgba(0,0,0,0.03); display:flex; flex-direction:column; gap:15px;">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-           <span style="font-size:0.8rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:1px;" data-i18n="ind_title">INDIVIDUO</span>
+           <span style="font-size:0.8rem; font-weight:700; color:#0ea5e9; text-transform:uppercase; letter-spacing:1px;" data-i18n="ind_title">INDIVIDUO</span>
            <i class="fas fa-layer-group" style="color:#0ea5e9; font-size:1.2rem;"></i>
         </div>
         <div>
-          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin-bottom:5px;" data-i18n="ind_text">Cada planta solar individual.</p>
-          <p style="font-size:0.85rem; color:#64748b; line-height:1.5;">Unidad mínima de análisis estadística dentro de la base de datos global.</p>
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">TEXTUAL</span>
+          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin:0;" data-i18n="ind_text">Cada planta solar individual.</p>
         </div>
-        <div style="margin-top:auto; padding:15px; background:#eef9ff; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#0ea5e9; border: 1px solid rgba(14,165,233,0.1);">
-          X<sub>i</sub> where <br>
-          i ∈ {1, 2, ..., N}
+        <div style="margin-top:auto;">
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">SIMBÓLICO</span>
+          <div style="padding:15px; background:#eef9ff; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#0ea5e9; border: 1px solid rgba(14,165,233,0.1);">
+            X<sub>i</sub> where <br>
+            i ∈ {1, 2, ..., N}
+          </div>
         </div>
       </article>
 
       <!-- Sample Card -->
       <article class="met-card" style="background:#fff; border-radius:20px; padding:30px; border-top:4px solid #1a4fdb; box-shadow:0 8px 30px rgba(0,0,0,0.03); display:flex; flex-direction:column; gap:15px;">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-           <span style="font-size:0.8rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:1px;" data-i18n="samp_title">MUESTRA</span>
+           <span style="font-size:0.8rem; font-weight:700; color:#1a4fdb; text-transform:uppercase; letter-spacing:1px;" data-i18n="samp_title">MUESTRA</span>
            <i class="fas fa-database" style="color:#1a4fdb; font-size:1.2rem;"></i>
         </div>
         <div>
-          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin-bottom:5px;" data-i18n="samp_text">Subconjunto representativo obtenido de Global Energy Monitor.</p>
-          <p style="font-size:0.85rem; color:#64748b; line-height:1.5;">Filtro específico aplicado para garantizar la calidad y procedencia de la información.</p>
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">TEXTUAL</span>
+          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin:0;" data-i18n="samp_text">Subconjunto representativo obtenido de Global Energy Monitor.</p>
         </div>
-        <div style="margin-top:auto; padding:15px; background:#f4f7fe; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#1a4fdb; border: 1px solid rgba(26,79,219,0.1);">
-          M ⊂ U | <br>
-          <span style="margin-left:10px">Entidad = "GEM"</span>
+        <div style="margin-top:auto;">
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">SIMBÓLICO</span>
+          <div style="padding:15px; background:#f4f7fe; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#1a4fdb; border: 1px solid rgba(26,79,219,0.1);">
+            M ⊂ U | <br>
+            <span style="margin-left:10px">Entidad = "GEM"</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study Card -->
+      <article class="met-card" style="background:#fff; border-radius:20px; padding:30px; border-top:4px solid #0ea5e9; box-shadow:0 8px 30px rgba(0,0,0,0.03); display:flex; flex-direction:column; gap:15px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+           <span style="font-size:0.8rem; font-weight:700; color:#0ea5e9; text-transform:uppercase; letter-spacing:1px;">CASO DE ESTUDIO</span>
+           <i class="fas fa-microscope" style="color:#0ea5e9; font-size:1.2rem;"></i>
+        </div>
+        <div>
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">TEXTUAL</span>
+          <p style="font-size:1.1rem; font-weight:600; color:#0e1726; margin:0;">Análisis de Arrendamientos Petroleros</p>
+        </div>
+        <div style="margin-top:auto;">
+          <span style="font-size:0.62rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">SIMBÓLICO</span>
+          <div style="padding:15px; background:#eef9ff; border-radius:12px; font-family:'Fira Code', monospace; font-size:0.85rem; color:#0ea5e9; border: 1px solid rgba(14,165,233,0.1);">
+            Analysis_ID: <br>
+            <span style="margin-left:10px">BLM-OIL-GAS-2026</span>
+          </div>
         </div>
       </article>
     </div>
@@ -886,187 +962,444 @@ const dSMethodology = `
 `;
 
 const dSVariablesCualitatives = `
-  <h3 class="title-3" data-i18n="qualitative_vars" style="margin-top:40px; margin-bottom:20px; color:#001b41;">Variables Cualitativas</h3>
+  <div class="solutions-header" id="ds-variables">
+    <span class="solutions-eyebrow" data-i18n="vars_landing_eyebrow">Categorización de Datos</span>
+    <h1 class="solutions-title" data-i18n="vars_qual_title">Variables Cualitativas</h1>
+    <p class="solutions-lead">Clasificación de atributos no numéricos que definen la procedencia técnica y operativa.</p>
+  </div>
 
-  <h4 class="title-4" data-i18n="nominals" style="margin-bottom:15px; color:#64748b; font-size:1rem; border-bottom:1px solid #eee; padding-bottom:5px;">Nominales</h4>
-  <div class="vars-grid-premium" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-bottom:40px;">
-    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/country.webp" alt="País" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Nominal</span>
-          <h4 data-i18n="cap_country">País</h4>
-        </div>
+  <h4 class="var-category-heading var-cat-nominal">
+    <span class="cat-icon"><i class="fas fa-tag"></i></span>
+    <span class="cat-label">Nominales</span>
+    <span class="cat-desc">Sin orden jerárquico</span>
+  </h4>
+  <div class="vars-solutions-grid" style="margin-bottom:4rem;">
+    <!-- País -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/country.webp" alt="País" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-nominal">Nominal</span>
+        <h3 class="solution-card-title" data-i18n="cap_country">País</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/mssarmiento/1400054" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/curvature-type.webp" alt="Curvatura" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Nominal</span>
-          <h4 data-i18n="cap_curvature">Tipo de Curvatura</h4>
-        </div>
+
+    <!-- Tipo de Curvatura -->
+    <a href="https://rpubs.com/mssarmiento/1400054" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/curvature-type.webp" alt="Curvatura" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-nominal">Nominal</span>
+        <h3 class="solution-card-title" data-i18n="cap_curvature">Tipo de Curvatura</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
 
-  <h4 class="title-4" data-i18n="ordinals" style="margin-bottom:15px; color:#64748b; font-size:1rem; border-bottom:1px solid #eee; padding-bottom:5px;">Ordinales</h4>
-  <div class="vars-grid-premium" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px;">
-    <a href="https://rpubs.com/mssarmiento/1400058" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/operational-status.webp" alt="Estado" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Ordinal</span>
-          <h4 data-i18n="cap_op_status">Estado Operacional</h4>
-        </div>
+  <h4 class="var-category-heading var-cat-ordinal" style="margin-top:2.5rem;">
+    <span class="cat-icon"><i class="fas fa-sort-amount-up"></i></span>
+    <span class="cat-label">Ordinales</span>
+    <span class="cat-desc">Con orden jerárquico definido</span>
+  </h4>
+  <div class="vars-solutions-grid">
+    <!-- Estado Operacional -->
+    <a href="https://rpubs.com/mssarmiento/1400058" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/operational-status.webp" alt="Estado" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_op_status">Estado Operacional</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/mssarmiento/1400060" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/slope-type.webp" alt="Pendiente" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Ordinal</span>
-          <h4 data-i18n="cap_slope">Tipo de Pendiente</h4>
-        </div>
+
+    <!-- Tipo de Pendiente -->
+    <a href="https://rpubs.com/mssarmiento/1400060" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/slope-type.webp" alt="Pendiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_slope">Tipo de Pendiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/mssarmiento/1400062" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/solar-aptitude-type.webp" alt="Aptitud" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Ordinal</span>
-          <h4 data-i18n="cap_aptitude">Tipo de Aptitud Solar</h4>
-        </div>
+
+    <!-- Tipo de Aptitud Solar -->
+    <a href="https://rpubs.com/mssarmiento/1400062" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/solar-aptitude-type.webp" alt="Aptitud" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_aptitude">Tipo de Aptitud Solar</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
 `;
 
 const dSVariablesCuantitatives = `
-      </figure>
+  <div class="solutions-header" style="margin-top:4rem;">
+    <h1 class="solutions-title" data-i18n="vars_quant_title">Variables Cuantitativas</h1>
+    <p class="solutions-lead">Mediciones numéricas y parámetros operativos extraídos de sensores y modelos climáticos.</p>
+  </div>
+
+  <h4 class="var-category-heading var-cat-discrete">
+    <span class="cat-icon"><i class="fas fa-hashtag"></i></span>
+    <span class="cat-label">Discretas</span>
+    <span class="cat-desc">Valores enteros contables</span>
+  </h4>
+  <div class="vars-solutions-grid" style="margin-bottom:4rem;">
+    <!-- Año de Operación -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Año" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-discrete">Discreta</span>
+        <h3 class="solution-card-title" data-i18n="cap_year">Año de Operación</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
     </a>
-    <a href="https://rpubs.com/mssarmiento/1400963" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/slope.webp" alt="Imagen representativa de la variable Pendiente" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_slope">Pendiente</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400966" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/curvature.webp" alt="Imagen representativa de la variable Curvatura" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_curvature">Curvatura</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400092" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/aspect.webp" alt="Imagen representativa de la variable Aspecto" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_aspect">Aspecto</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400090" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/ghi.webp" alt="Imagen representativa de la variable GHI" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_ghi">GHI</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400105" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/solar-aptitude.webp" alt="Imagen representativa de la variable Aptitud Solar" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_aptitude">Aptitud Solar</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400107" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/humidity.webp" alt="Imagen representativa de la variable Humedad" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_humidity">Humedad</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400109" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-speed.webp" alt="Imagen representativa de la variable Velocidad del Viento" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_wind_speed">Velocidad del Viento</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400110" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-direction.webp" alt="Imagen representativa de la variable Dirección del Viento" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_wind_dir">Dirección del Viento</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400112" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/temperatura.webp" alt="Imagen representativa de la variable Temperatura Ambiente" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_temp">Temperatura Ambiente</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400114" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/optimal-tilt.webp" alt="Imagen representativa de la variable Inclinación Óptima" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_tilt">Inclinación Óptima</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1400119" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/max-power-hour.webp" alt="Imagen representativa de la variable Potencial Fotovoltaico" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_power">Potencial Fotovoltaico</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1401015" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Imagen representativa de la variable Capacidad" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_capacity">Capacidad</figcaption>
-      </figure>
-    </a>
-    <a href="https://rpubs.com/mssarmiento/1401019" target="_blank">
-      <figure>
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/dist-to-road.webp" alt="Imagen representativa de la variable Distancia a la vía" class="ds-vcuanti-img"/>
-        <figcaption data-i18n="cap_dist_road">Distancia a la Vía</figcaption>
-      </figure>
+    
+    <!-- Cantidad de Unidades -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/max-power-hour.webp" alt="Unidades" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-discrete">Discreta</span>
+        <h3 class="solution-card-title" data-i18n="cap_units">Cantidad de Unidades</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
     </a>
   </div>
-</article>
+
+  <h4 class="var-category-heading var-cat-continuous" style="margin-top:2.5rem;">
+    <span class="cat-icon"><i class="fas fa-wave-square"></i></span>
+    <span class="cat-label">Continuas</span>
+    <span class="cat-desc">Valores numéricos en rango real</span>
+  </h4>
+  <div class="vars-solutions-grid">
+    <!-- Pendiente -->
+    <a href="https://rpubs.com/mssarmiento/1400963" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/slope.webp" alt="Pendiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_slope">Pendiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Curvatura -->
+    <a href="https://rpubs.com/mssarmiento/1400966" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/curvature.webp" alt="Curvatura" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_curvature">Curvatura</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Aspecto -->
+    <a href="https://rpubs.com/mssarmiento/1400092" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/aspect.webp" alt="Aspecto" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_aspect">Aspecto</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- GHI -->
+    <a href="https://rpubs.com/mssarmiento/1400090" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/ghi.webp" alt="GHI" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_ghi">GHI</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Aptitud Solar -->
+    <a href="https://rpubs.com/mssarmiento/1400105" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/solar-aptitude.webp" alt="Aptitud Solar" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_aptitude">Aptitud Solar</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Humedad -->
+    <a href="https://rpubs.com/mssarmiento/1400107" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/humidity.webp" alt="Humedad" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_humidity">Humedad</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Velocidad del Viento -->
+    <a href="https://rpubs.com/mssarmiento/1400109" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-speed.webp" alt="Velocidad del Viento" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_wind_speed">Velocidad del Viento</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Dirección del Viento -->
+    <a href="https://rpubs.com/mssarmiento/1400110" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-direction.webp" alt="Dirección del Viento" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_wind_dir">Dirección del Viento</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Temperatura Ambiente -->
+    <a href="https://rpubs.com/mssarmiento/1400112" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/temperatura.webp" alt="Temperatura Ambiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_temp">Temperatura Ambiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Inclinación Óptima -->
+    <a href="https://rpubs.com/mssarmiento/1400114" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/optimal-tilt.webp" alt="Inclinación Óptima" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_tilt">Inclinación Óptima</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Potencial Fotovoltaico -->
+    <a href="https://rpubs.com/mssarmiento/1400119" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/max-power-hour.webp" alt="Potencial Fotovoltaico" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_power">Potencial Fotovoltaico</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Capacidad -->
+    <a href="https://rpubs.com/mssarmiento/1401015" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Capacidad" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_capacity">Capacidad</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Distancia a la Vía -->
+    <a href="https://rpubs.com/mssarmiento/1401019" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/dist-to-road.webp" alt="Distancia a la Vía" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_dist_road">Distancia a la Vía</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+  </div>
 `;
 
 const dSVariables = `
-<section class="section-box ds-variable-tables" id="ds-variables-tables">
-  
-  <h2 class="title-2" data-i18n="table_vars_title">TABLA DE VARIABLES</h2>
-  <div>
-    <iframe class="varibles-table" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPdYlLX7_NKZ1VafXC-7KRWtlHjp6stlj6ywUzQzt_25XI3jXD4hpEY8u2JejFng/pubhtml?gid=436771283&&single=true&chrome=false&widget=false&headers=true"></iframe>
-    
-    <a href="https://docs.google.com/spreadsheets/d/1OxlxfP1gWkoZjoOgeI-uo8XXsAFGeRp0/edit?gid=436771283#gid=436771283"
-      target="_blank"
-      class="open-external-file"
-      data-i18n="open_doc">
-      Abrir Documento Completo
-    </a>
-  </div>
+<div class="dS-content-container" style="background:#f1f5f9; padding: 4rem 0;">
+  <div class="container-corp">
+    <!-- Section: Tabla de Variables -->
+    <section class="section-box ds-variable-tables" id="ds-variables-tables" style="background:#fff; margin-bottom:40px; padding:3rem 3.5rem;">
+      <div class="section-title-wrap">
+        <h2 class="title-2" data-i18n="table_vars_title">TABLA DE VARIABLES</h2>
+        <div class="section-divider"></div>
+      </div>
 
-  <h2 class="title-2" data-i18n="table_indicators_title">TABLA DE INDICADORES</h2>
-  <div>
-    <iframe class="varibles-table" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfSg1xyD8fXx6zGWAkHF_6MhmX-V1F1CcKGPEYPm2SEagGscrKvoFu7IeLm8onaw/pubhtml?gid=2064573701&amp;single=true&amp;chrome=false&amp;widget=false&amp;headers=true"></iframe>
+      <!-- Professional Table Panel: Variables -->
+      <div class="table-panel" style="margin-top:2rem;">
+        <div class="table-panel-header">
+          <div class="table-panel-header-left">
+            <div class="table-panel-icon"><i class="fas fa-table"></i></div>
+            <div>
+              <p class="table-panel-title">Tabla de Variables</p>
+              <p class="table-panel-subtitle">Dataset &middot; BLM Oil &amp; Gas Leases (MLRS)</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="table-panel-badge"><i class="fas fa-columns"></i> 19 Variables</span>
+            <span class="table-panel-badge"><i class="fas fa-database"></i> MLRS</span>
+          </div>
+        </div>
+        <div class="table-panel-body">
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPdYlLX7_NKZ1VafXC-7KRWtlHjp6stlj6ywUzQzt_25XI3jXD4hpEY8u2JejFng/pubhtml?gid=436771283&&single=true&chrome=false&widget=false&headers=true"></iframe>
+        </div>
+        <div class="table-panel-footer">
+          <span class="table-panel-source">
+            <i class="fas fa-info-circle"></i>
+            Fuente: Global Energy Monitor &middot; Procesado con RStudio
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1OxlxfP1gWkoZjoOgeI-uo8XXsAFGeRp0/edit?gid=436771283#gid=436771283"
+            target="_blank" class="table-panel-open-btn" data-i18n="open_doc">
+            <i class="fas fa-external-link-alt"></i>
+            Abrir Documento Completo
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <a href="https://docs.google.com/spreadsheets/d/1J1y-nt62qz_h4md9Z-qXavRisDjFXZPO/edit?gid=2064573701#gid=2064573701"
-      target="_blank"
-      class="open-external-file last-open-external-file"
-      data-i18n="open_doc">
-      Abrir Documento Completo
-    </a>
+    <!-- Section: Tabla de Indicadores -->
+    <section class="section-box ds-indicator-tables" id="ds-indicators-tables" style="background:#fff; padding:3rem 3.5rem;">
+      <div class="section-title-wrap">
+        <h2 class="title-2" data-i18n="table_indicators_title">TABLA DE INDICADORES</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Professional Table Panel: Indicators -->
+      <div class="table-panel" style="margin-top:2rem;">
+        <div class="table-panel-header">
+          <div class="table-panel-header-left">
+            <div class="table-panel-icon"><i class="fas fa-chart-bar"></i></div>
+            <div>
+              <p class="table-panel-title">Tabla de Indicadores</p>
+              <p class="table-panel-subtitle">Indicadores estad&iacute;sticos &middot; An&aacute;lisis descriptivo</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="table-panel-badge"><i class="fas fa-chart-line"></i> Estadísticos</span>
+            <span class="table-panel-badge"><i class="fas fa-calculator"></i> Descriptivos</span>
+          </div>
+        </div>
+        <div class="table-panel-body">
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfSg1xyD8fXx6zGWAkHF_6MhmX-V1F1CcKGPEYPm2SEagGscrKvoFu7IeLm8onaw/pubhtml?gid=2064573701&amp;single=true&amp;chrome=false&amp;widget=false&amp;headers=true"></iframe>
+        </div>
+        <div class="table-panel-footer">
+          <span class="table-panel-source">
+            <i class="fas fa-info-circle"></i>
+            Fuente: An&aacute;lisis estad&iacute;stico del equipo FIGEMPA &middot; UCE 2026
+          </span>
+          <a href="https://docs.google.com/spreadsheets/d/1J1y-nt62qz_h4md9Z-qXavRisDjFXZPO/edit?gid=2064573701#gid=2064573701"
+            target="_blank" class="table-panel-open-btn" data-i18n="open_doc">
+            <i class="fas fa-external-link-alt"></i>
+            Abrir Documento Completo
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-<section class="section-box ds-variables-section" id="ds-variables">
-  <h2 class="title-2" data-i18n="vars_title">VARIABLES</h2>
-  ${dSVariablesCualitatives}
-  ${dSVariablesCuantitatives}
+</div>
+
+<section class="section-box is-vars-section" id="ds-vars-cards" style="background:#f1f5f9; padding: 4rem 0;">
+  <div class="container-corp" style="padding-left:2.5rem; padding-right:2.5rem;">
+    ${dSVariablesCualitatives}
+    <div style="height:80px;"></div>
+    ${dSVariablesCuantitatives}
+  </div>
 </section>
 `;
 
 // Descriptive Statistics (DS) section
 const descriptiveStatisticsCode = `
   <div class="map-hero-corp">
-    <div class="map-hero-eyebrow-corp">
-      <i class="fas fa-chart-line"></i> <span data-i18n="nav_desc_stats">Business Intelligence</span>
-    </div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="ds_title">ESTADÍSTICA DESCRIPTIVA</h1>
     <p data-i18n="ds_sub">Análisis de variables, indicadores de rendimiento y métricas operativas del sector solar.</p>
   </div>
@@ -1091,70 +1424,343 @@ navlDSLinks.forEach(link => {
 ---------------------------- */
 // Inferential Statistics parts
 const iSCualitativesVariables = `
-</article>
-`;
+  <div class="solutions-header" id="is-variables">
+    <span class="solutions-eyebrow" data-i18n="vars_landing_eyebrow">Categorización de Datos</span>
+    <h1 class="solutions-title" data-i18n="vars_qual_title">Variables Cualitativas</h1>
+    <p class="solutions-lead">Clasificación de atributos no numéricos que definen la procedencia técnica y operativa.</p>
+  </div>
 
-const iSCuantitativesVariables = `
-  <h3 class="title-3" data-i18n="quant_vars" style="margin-top:40px; margin-bottom:20px; color:#001b41;">Variables Cuantitativas</h3>
+  <h4 class="var-category-heading var-cat-nominal">
+    <span class="cat-icon"><i class="fas fa-tag"></i></span>
+    <span class="cat-label">Nominales</span>
+    <span class="cat-desc">Sin orden jerárquico</span>
+  </h4>
+  <div class="vars-solutions-grid" style="margin-bottom:4rem;">
+    <!-- País -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/country.webp" alt="País" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-nominal">Nominal</span>
+        <h3 class="solution-card-title" data-i18n="cap_country">País</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
 
-  <h4 class="title-4" data-i18n="discretes" style="margin-bottom:15px; color:#64748b; font-size:1rem; border-bottom:1px solid #eee; padding-bottom:5px;">Discretas</h4>
-  <div class="vars-grid-premium" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-bottom:40px;">
-    <a href="https://rpubs.com/Fernando_Neira/1400189" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/sistema-solar-de-pv.webp" alt="Aptitud" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Discreta</span>
-          <h4 data-i18n="cap_aptitude_rounded">Aptitud Redondeada</h4>
-        </div>
+    <!-- Tipo de Curvatura -->
+    <a href="https://rpubs.com/mssarmiento/1400054" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/curvature-type.webp" alt="Curvatura" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-nominal">Nominal</span>
+        <h3 class="solution-card-title" data-i18n="cap_curvature">Tipo de Curvatura</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
-  
-  <h4 class="title-4" data-i18n="continuous" style="margin-bottom:15px; color:#64748b; font-size:1rem; border-bottom:1px solid #eee; padding-bottom:5px;">Continuas</h4>
-  <div class="vars-grid-premium" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px;">
-    <a href="https://rpubs.com/JULEY/1404470" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/latitud.webp" alt="Latitud" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Continua</span>
-          <h4 data-i18n="cap_lat">Latitud</h4>
-        </div>
+
+  <h4 class="var-category-heading var-cat-ordinal" style="margin-top:2.5rem;">
+    <span class="cat-icon"><i class="fas fa-sort-amount-up"></i></span>
+    <span class="cat-label">Ordinales</span>
+    <span class="cat-desc">Con orden jerárquico definido</span>
+  </h4>
+  <div class="vars-solutions-grid">
+    <!-- Estado Operacional -->
+    <a href="https://rpubs.com/mssarmiento/1400058" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/operational-status.webp" alt="Estado" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_op_status">Estado Operacional</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/JULEY/1402616" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/elevation.webp" alt="Elevación" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Continua</span>
-          <h4 data-i18n="cap_elev">Elevación</h4>
-        </div>
+
+    <!-- Tipo de Pendiente -->
+    <a href="https://rpubs.com/mssarmiento/1400060" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/slope-type.webp" alt="Pendiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_slope">Tipo de Pendiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/Fernando_Neira/1400046" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/slope.webp" alt="Pendiente" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Continua</span>
-          <h4 data-i18n="cap_slope">Pendiente</h4>
-        </div>
+
+    <!-- Tipo de Aptitud Solar -->
+    <a href="https://rpubs.com/mssarmiento/1400062" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcualit/solar-aptitude-type.webp" alt="Aptitud" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-ordinal">Ordinal</span>
+        <h3 class="solution-card-title" data-i18n="cap_aptitude">Tipo de Aptitud Solar</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/Caliche/1401446" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/ghi.webp" alt="GHI" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Continua</span>
-          <h4 data-i18n="cap_ghi">GHI</h4>
-        </div>
+  </div>
+`;
+
+const iSCuantitativesVariables = `
+  <div class="solutions-header" style="margin-top:4rem;">
+    <h1 class="solutions-title" data-i18n="vars_quant_title">Variables Cuantitativas</h1>
+    <p class="solutions-lead">Mediciones numéricas y parámetros operativos extraídos de sensores y modelos climáticos.</p>
+  </div>
+
+  <h4 class="var-category-heading var-cat-discrete">
+    <span class="cat-icon"><i class="fas fa-hashtag"></i></span>
+    <span class="cat-label">Discretas</span>
+    <span class="cat-desc">Valores enteros contables</span>
+  </h4>
+  <div class="vars-solutions-grid" style="margin-bottom:4rem;">
+    <!-- Año de Operación -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Año" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-discrete">Discreta</span>
+        <h3 class="solution-card-title" data-i18n="cap_year">Año de Operación</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
-    <a href="https://rpubs.com/Juleydi/1401407" target="_blank" class="var-card-link">
-      <div class="var-card-premium">
-        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Capacidad" class="var-img-fixed"/>
-        <div class="var-card-body">
-          <span class="var-tag">Continua</span>
-          <h4 data-i18n="cap_capacity">Capacidad</h4>
-        </div>
+    
+    <!-- Cantidad de Unidades -->
+    <a href="https://rpubs.com/mssarmiento/1400052" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/max-power-hour.webp" alt="Unidades" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-discrete">Discreta</span>
+        <h3 class="solution-card-title" data-i18n="cap_units">Cantidad de Unidades</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <h4 class="var-category-heading var-cat-continuous" style="margin-top:2.5rem;">
+    <span class="cat-icon"><i class="fas fa-wave-square"></i></span>
+    <span class="cat-label">Continuas</span>
+    <span class="cat-desc">Valores numéricos en rango real</span>
+  </h4>
+  <div class="vars-solutions-grid">
+    <!-- Pendiente -->
+    <a href="https://rpubs.com/mssarmiento/1400963" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/slope.webp" alt="Pendiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_slope">Pendiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Curvatura -->
+    <a href="https://rpubs.com/mssarmiento/1400966" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/curvature.webp" alt="Curvatura" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_curvature">Curvatura</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Aspecto -->
+    <a href="https://rpubs.com/mssarmiento/1400092" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/aspect.webp" alt="Aspecto" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_aspect">Aspecto</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- GHI -->
+    <a href="https://rpubs.com/mssarmiento/1400090" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/ghi.webp" alt="GHI" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_ghi">GHI</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Aptitud Solar -->
+    <a href="https://rpubs.com/mssarmiento/1400105" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/solar-aptitude.webp" alt="Aptitud Solar" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_aptitude">Aptitud Solar</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Humedad -->
+    <a href="https://rpubs.com/mssarmiento/1400107" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/humidity.webp" alt="Humedad" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_humidity">Humedad</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Velocidad del Viento -->
+    <a href="https://rpubs.com/mssarmiento/1400109" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-speed.webp" alt="Velocidad del Viento" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_wind_speed">Velocidad del Viento</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Dirección del Viento -->
+    <a href="https://rpubs.com/mssarmiento/1400110" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/wind-direction.webp" alt="Dirección del Viento" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_wind_dir">Dirección del Viento</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Temperatura Ambiente -->
+    <a href="https://rpubs.com/mssarmiento/1400112" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/temperatura.webp" alt="Temperatura Ambiente" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_temp">Temperatura Ambiente</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Inclinación Óptima -->
+    <a href="https://rpubs.com/mssarmiento/1400114" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/optimal-tilt.webp" alt="Inclinación Óptima" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_tilt">Inclinación Óptima</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Potencial Fotovoltaico -->
+    <a href="https://rpubs.com/mssarmiento/1400119" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/max-power-hour.webp" alt="Potencial Fotovoltaico" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_power">Potencial Fotovoltaico</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Capacidad -->
+    <a href="https://rpubs.com/mssarmiento/1401015" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/total-power.webp" alt="Capacidad" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_capacity">Capacidad</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </div>
+    </a>
+
+    <!-- Distancia a la Vía -->
+    <a href="https://rpubs.com/mssarmiento/1401019" target="_blank" class="solution-card">
+      <div class="solution-image-container">
+        <img src="https://mssarmientoo.github.io/figempa/assets/images/vcuanti/dist-to-road.webp" alt="Distancia a la Vía" class="solution-image"/>
+      </div>
+      <div class="solution-body">
+        <span class="solution-card-tag tag-continuous">Continua</span>
+        <h3 class="solution-card-title" data-i18n="cap_dist_road">Distancia a la Vía</h3>
+        <span class="solution-link">
+          <span data-i18n="view_more">Ver Detalles</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
@@ -1163,19 +1769,15 @@ const iSCuantitativesVariables = `
 // Inferencial Statistics (IS) section
 const inferencialStatisticsCode = `
   <div class="section-hero">
-    <div class="section-hero-eyebrow"><i class="fas fa-flask"></i> <span data-i18n="nav_inf_stats">Estadística Inferencial</span></div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="is_title">ESTADÍSTICA INFERENCIAL</h1>
     <p class="section-hero-sub" data-i18n="is_sub">Pruebas de hipótesis y análisis inferencial aplicado a las variables cualitativas y cuantitativas de las plantas solares.</p>
   </div>
 
-  <section class="section-box is-vars-section" id="is-vars">
-    <div class="section-title-wrap">
-      <h2 class="title-2" data-i18n="vars_title">VARIABLES DEL DATASET</h2>
-      <div class="section-divider"></div>
-    </div>
-    <div class="is-vars-dashboard" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:25px; margin-top:30px;">
-       <!-- Variable Items would be too long for a single chunk, I will focus on the structure first -->
+  <section class="section-box is-vars-section" id="is-vars" style="background:#f1f5f9; padding: 4rem 0;">
+    <div class="container-corp">
        ${iSCualitativesVariables}
+       <div style="height:80px;"></div>
        ${iSCuantitativesVariables}
     </div>
   </section>
@@ -1196,7 +1798,7 @@ inferentialStatisticsLink.addEventListener("click", (e) => {
 ---------------------------- */
 const regressionModelsCode = `
   <div class="section-hero">
-    <div class="section-hero-eyebrow"><i class="fas fa-project-diagram"></i> <span data-i18n="nav_reg_models">Modelos de Regresión</span></div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="reg_models_title">MODELOS DE REGRESIÓN</h1>
     <p class="section-hero-sub" data-i18n="reg_sub">Regresiones simples (lineal, potencial, exponencial, logarítmica y polinómica) y regresión múltiple 3D entre variables del dataset.</p>
   </div>
@@ -1248,9 +1850,7 @@ regressionModelsLink.addEventListener("click", (e) => {
 ---------------------------- */
 const machineLearningCode = `
   <div class="map-hero-corp">
-    <div class="map-hero-eyebrow-corp">
-      <i class="fas fa-brain"></i> <span data-i18n="nav_ml">Inteligencia Artificial</span>
-    </div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="ml_title">MACHINE LEARNING</h1>
     <p data-i18n="ml_sub">Modelado predictivo y clasificación de aptitud solar mediante redes neuronales y regresión avanzada.</p>
   </div>
@@ -1306,9 +1906,7 @@ machineLearningLink.addEventListener("click", (e) => {
 ---------------------------- */
 const toolsCode = `
   <div class="map-hero-corp">
-    <div class="map-hero-eyebrow-corp">
-      <i class="fas fa-tools"></i> <span data-i18n="nav_tools">Infraestructura Tecnológica</span>
-    </div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="tools_title">RECURSOS Y HERRAMIENTAS</h1>
     <p data-i18n="tools_sub">Ecosistema operativo para el procesamiento de datos geoespaciales y modelado estadístico.</p>
   </div>
@@ -1339,9 +1937,7 @@ toolsLink.addEventListener("click", (e) => {
 // About Us section
 const aboutUsHTML = `
   <div class="map-hero-corp">
-    <div class="map-hero-eyebrow-corp">
-      <i class="fas fa-users"></i> <span data-i18n="nav_about">Directorio Académico</span>
-    </div>
+    <!-- Section Label Removed -->
     <h1 data-i18n="about_us_title">SOBRE NOSOTROS</h1>
     <p data-i18n="about_us_sub">Facultad de Ingeniería en Geología, Minas, Petróleos y Ambiental · UCE.</p>
   </div>
